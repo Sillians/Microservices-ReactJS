@@ -1,0 +1,2 @@
+# Microservices-ReactJS
+Docker is an open source software containerization platform that allows you to package applications into standardized, isolated units called containers. These containers combine the applications source code with the operating system libraries and dependencies required to run that code in any environment. Docker allows you to build, test, deploy, and scale applications quickly. Its development speed, scalability, and ecosystem richness are some of the many reasons why we will use it to containerize a React application. 
