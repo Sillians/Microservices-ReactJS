@@ -1,0 +1,19 @@
+FROM node AS builder
+# set working directory
+WORKDIR /app
+# we want to cache this installation of the package.json file, since it doesn't change a lot.
+COPY package.json .
+# install the dependencies
+RUN npm install
+# copy all source files
+COPY . .
+ARG REACT_APP_NAME
+# Add a default value for the env
+ENV REACT_APP_NAME=${REACT_APP_NAME}
+# Run and Build
+RUN npm run build
+
+# Use the nginx server
+FROM nginx
+# copy from the output of the run build command and paste into this `/usr/share/nginx/html` inside the nginx container
+COPY --from=builder /app/build /usr/share/nginx/html

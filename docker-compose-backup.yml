@@ -1,0 +1,20 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  react-app:
+    stdin_open: true    # docker run -i
+    tty: true           # docker run -t
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      # - logvolume01:/var/log
+    environment:
+      - REACT_APP_NAME=sillians
+    # env_file:
+    #   - ./.env
+
+# volumes:
+#   logvolume01: {}

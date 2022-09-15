@@ -1,0 +1,15 @@
+FROM node
+# set working directory
+WORKDIR /app
+# we want to cache this installation of the package.json file, since it doesn't change a lot.
+COPY package.json .
+# install the dependencies
+RUN npm install
+# copy all source files
+COPY . .
+# Add a default value for the env
+ENV REACT_APP_NAME=sillians
+# expose port 3000
+EXPOSE 3000
+# start
+CMD [ "npm", "start" ]
